@@ -1,14 +1,13 @@
 import { Canvas } from '@react-three/fiber';
-import Sun from './components/Sun';
+import { Sun } from './components/Sun';
 
 const App = () => {
   return (
     <div className='h-screen'>
       <Canvas>
-        <color attach='background' args={['#202025']} />
+        <color attach='background' args={['black']} />
         <ambientLight />
         <Sun />
-        <axesHelper args={[3]} />
       </Canvas>
     </div>
   );
