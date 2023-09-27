@@ -1,20 +1,20 @@
 import { Canvas } from '@react-three/fiber';
-import { Sun } from './components/Sun';
+import { Sun } from './components/planets/Sun';
 import { Stars } from '@react-three/drei';
-import { Mercury } from './components/Mercury';
-import { Venus } from './components/Venus';
-import { Earth } from './components/Earth';
-import { Mars } from './components/Mars';
-import { Jupiter } from './components/Jupiter';
-import { Saturn } from './components/Saturn';
-import { Uranus } from './components/Uranus';
-import { Neptune } from './components/Neptune';
+import { Mercury } from './components/planets/Mercury';
+import { Venus } from './components/planets/Venus';
+import { Earth } from './components/planets/Earth';
+import { Mars } from './components/planets/Mars';
+import { Jupiter } from './components/planets/Jupiter';
+import { Saturn } from './components/planets/Saturn';
+import { Uranus } from './components/planets/Uranus';
+import { Neptune } from './components/planets/Neptune';
 const App = () => {
   return (
     <div className='h-screen'>
       <Canvas>
         <color attach='background' args={['black']} />
-        <ambientLight intensity={1} />
+        <ambientLight intensity={0.1} />
         <Sun />
         <Mercury />
         <Venus />
