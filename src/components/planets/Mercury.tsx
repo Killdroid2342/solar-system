@@ -22,6 +22,7 @@ export function Mercury() {
     <mesh ref={systemRef}>
       <sphereGeometry args={[0.5, 128, 64]} />
       <meshStandardMaterial map={texture} />
+
       {/* <axesHelper /> */}
     </mesh>
   );
