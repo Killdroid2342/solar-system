@@ -1,7 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { Sun } from './components/Sun';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { Stars } from '@react-three/drei';
 import { Mercury } from './components/Mercury';
 import { Venus } from './components/Venus';
 import { Earth } from './components/Earth';
@@ -15,16 +14,8 @@ const App = () => {
     <div className='h-screen'>
       <Canvas>
         <color attach='background' args={['black']} />
-        <ambientLight intensity={6} />
-        <EffectComposer multisampling={8}>
-          <Bloom
-            kernelSize={3}
-            luminanceThreshold={0}
-            luminanceSmoothing={0.4}
-            intensity={0.6}
-          />
-          <Sun />
-        </EffectComposer>
+        <ambientLight intensity={1} />
+        <Sun />
         <Mercury />
         <Venus />
         <Earth />
