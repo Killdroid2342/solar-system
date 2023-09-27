@@ -7,7 +7,16 @@ import { useFrame } from '@react-three/fiber';
 export function Jupiter() {
   const systemRef = useRef<Mesh>(null!);
   const texture = useTexture('src/assets/img/jupiter.jpg');
-  useFrame(() => {});
+  const orbitRadius = 100;
+  const orbitSpeed = 0.0009;
+  const angle = useRef(0);
+  useFrame(() => {
+    angle.current += orbitSpeed;
+    const x = Math.cos(angle.current) * orbitRadius;
+    const z = Math.sin(angle.current) * orbitRadius;
+    systemRef.current.position.set(x, 0, z);
+    systemRef.current.rotation.y += 0.006;
+  });
   return (
     <>
       <mesh ref={systemRef} position={[100, 0, 0]}>
