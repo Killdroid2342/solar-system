@@ -14,16 +14,16 @@ const App = () => {
     <div className='h-screen'>
       <Canvas>
         <color attach='background' args={['black']} />
-        <ambientLight intensity={0.1} />
         <Sun />
+        <ambientLight intensity={0.1} />
         <Mercury />
         <Venus />
         <Earth />
-        <Mars />
         <Jupiter />
         <Saturn />
         <Uranus />
         <Neptune />
+        <Mars />
         <Stars
           radius={150}
           count={7000}

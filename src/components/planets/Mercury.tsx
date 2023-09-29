@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Mesh } from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
@@ -22,7 +22,7 @@ export function Mercury() {
     <mesh ref={systemRef}>
       <sphereGeometry args={[0.5, 128, 64]} />
       <meshStandardMaterial map={texture} />
-
+      {/* <lineBasicMaterial /> */}
       {/* <axesHelper /> */}
     </mesh>
   );
