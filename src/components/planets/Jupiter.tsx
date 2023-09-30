@@ -18,11 +18,17 @@ export function Jupiter() {
   });
   return (
     <>
-      <mesh ref={systemRef} position={[100, 0, 0]}>
-        <sphereGeometry args={[3, 128, 64]} />
-        <meshStandardMaterial map={texture} />
-        <OrbitControls />
-      </mesh>
+      <group>
+        <mesh rotation-x={Math.PI / 2}>
+          <torusGeometry args={[orbitRadius, 0.02]} />
+          <meshBasicMaterial color='white' />
+        </mesh>
+        <mesh ref={systemRef} position={[100, 0, 0]}>
+          <sphereGeometry args={[3, 128, 64]} />
+          <meshStandardMaterial map={texture} />
+          <OrbitControls />
+        </mesh>
+      </group>
     </>
   );
 }

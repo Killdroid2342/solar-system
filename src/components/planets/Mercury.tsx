@@ -19,11 +19,16 @@ export function Mercury() {
   });
 
   return (
-    <mesh ref={systemRef}>
-      <sphereGeometry args={[0.5, 128, 64]} />
-      <meshStandardMaterial map={texture} />
-      {/* <lineBasicMaterial /> */}
-      {/* <axesHelper /> */}
-    </mesh>
+    <group>
+      <mesh rotation-x={Math.PI / 2}>
+        <torusGeometry args={[orbitRadius, 0.03, 64, 64]} />
+        <meshBasicMaterial color='white' />
+      </mesh>
+      {/* The Planet (Sphere) */}
+      <mesh ref={systemRef}>
+        <sphereGeometry args={[0.5, 128, 64]} />
+        <meshStandardMaterial map={texture} />
+      </mesh>
+    </group>
   );
 }

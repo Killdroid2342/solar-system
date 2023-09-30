@@ -19,11 +19,17 @@ export function Venus() {
   });
   return (
     <>
-      <mesh ref={systemRef} position={[40, 0, 0]}>
-        <sphereGeometry args={[0.8, 128, 64]} />
-        <meshStandardMaterial map={texture} />
-        <OrbitControls />
-      </mesh>
+      <group>
+        <mesh rotation-x={Math.PI / 2}>
+          <torusGeometry args={[orbitRadius, 0.02]} />
+          <meshBasicMaterial color='white' />
+        </mesh>
+        <mesh ref={systemRef} position={[40, 0, 0]}>
+          <sphereGeometry args={[0.8, 128, 64]} />
+          <meshStandardMaterial map={texture} />
+          <OrbitControls />
+        </mesh>
+      </group>
     </>
   );
 }
