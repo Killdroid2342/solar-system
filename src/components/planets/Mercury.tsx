@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Mesh } from 'three';
+import { Mesh, Raycaster, Vector3 } from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 

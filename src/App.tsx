@@ -15,10 +15,17 @@ import Modal from './components/planets/PlanetModal/Modal';
 
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
-
+  const [data, setData] = useState('');
+  console.log(data);
+  const OpenModal = () => {
+    setOpenModal(true);
+  };
+  const closeModal = () => {
+    setOpenModal(false);
+  };
   function getData() {
     axios.get('https://api.le-systeme-solaire.net/rest/bodies/').then((res) => {
-      console.log(res);
+      setData(res.data);
     });
   }
   useEffect(() => {
@@ -29,16 +36,16 @@ const App = () => {
       <Canvas>
         <PerspectiveCamera makeDefault fov={50} position={[90, 120, 90]} />
         <color attach='background' args={['black']} />
-        <Sun />
+        <Sun OpenModal={OpenModal} />
         <ambientLight intensity={0.1} />
-        <Mercury />
+        <Mercury OpenModal={OpenModal} />
         <Venus />
         <Earth />
+        <Mars />
         <Jupiter />
         <Saturn />
         <Uranus />
         <Neptune />
-        <Mars />
         <Stars
           radius={150}
           count={7000}
@@ -48,7 +55,7 @@ const App = () => {
           speed={3}
         />
       </Canvas>
-      {/* <Modal /> */}
+      {openModal && <Modal closeModal={closeModal} />}
     </div>
   );
 };
