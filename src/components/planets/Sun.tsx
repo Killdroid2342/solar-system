@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Mesh, PointLight } from 'three';
 import { OrbitControls, useTexture } from '@react-three/drei';
 
-export function Sun({ planetModal, setPlanetModal, OpenModal }: any) {
+export function Sun({ OpenModal }: any) {
   const texture = useTexture('src/assets/img/sun.jpg');
   const systemRef = useRef<Mesh>(null!);
   const pointLightRef = useRef<PointLight>(null!);
