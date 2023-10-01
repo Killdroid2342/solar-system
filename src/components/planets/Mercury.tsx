@@ -24,7 +24,7 @@ export function Mercury() {
         <torusGeometry args={[orbitRadius, 0.03, 64, 64]} />
         <meshBasicMaterial color='white' />
       </mesh>
-      {/* The Planet (Sphere) */}
+
       <mesh ref={systemRef}>
         <sphereGeometry args={[0.5, 128, 64]} />
         <meshStandardMaterial map={texture} />
