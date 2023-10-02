@@ -16,17 +16,30 @@ import Modal from './components/planets/PlanetModal/Modal';
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState('');
-  console.log(data);
-  const OpenModal = () => {
+  const [selectedPlanet, setSelectedPlanet] = useState('');
+
+  const OpenModal = (name: string) => {
+    setSelectedPlanet(name);
     setOpenModal(true);
   };
   const closeModal = () => {
     setOpenModal(false);
   };
-  function getData() {
-    axios.get('https://api.le-systeme-solaire.net/rest/bodies/').then((res) => {
-      setData(res.data);
-    });
+  async function getData() {
+    const options = {
+      method: 'GET',
+      url: 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/',
+      headers: {
+        'X-RapidAPI-Key': '666a0b4740msh10e928643b87294p167356jsn43c95ed0f3b6',
+        'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com',
+      },
+    };
+    try {
+      const response = await axios.request(options);
+      setData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }
   useEffect(() => {
     getData();
@@ -38,8 +51,8 @@ const App = () => {
         <color attach='background' args={['black']} />
         <Sun OpenModal={OpenModal} />
         <ambientLight intensity={0.1} />
-        <Mercury OpenModal={OpenModal} />
-        <Venus />
+        <Mercury OpenModal={OpenModal} name='Mercury' />
+        <Venus OpenModal={OpenModal} name='Venus' />
         <Earth />
         <Mars />
         <Jupiter />
@@ -55,7 +68,14 @@ const App = () => {
           speed={3}
         />
       </Canvas>
-      {openModal && <Modal closeModal={closeModal} />}
+      {openModal && (
+        <Modal
+          closeModal={closeModal}
+          data={data}
+          setData={setData}
+          selectedPlanet={selectedPlanet}
+        />
+      )}
     </div>
   );
 };
