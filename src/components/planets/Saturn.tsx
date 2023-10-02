@@ -9,11 +9,11 @@ export function Saturn() {
   const texture = useTexture('src/assets/img/saturn.jpg');
   const ringTexture = useTexture('src/assets/img/saturnring.png');
   const orbitRadius = 120;
-  const orbitSpeed = 0.0005;
+  // const orbitSpeed = 0.0005;
   const angle = useRef(0);
 
   useFrame(() => {
-    angle.current += orbitSpeed;
+    // angle.current += orbitSpeed;
     const x = Math.cos(angle.current) * orbitRadius;
 
     const z = Math.sin(angle.current) * orbitRadius;

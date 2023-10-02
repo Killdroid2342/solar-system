@@ -7,10 +7,10 @@ export function Earth() {
   const systemRef = useRef<Mesh>(null!);
   const texture = useTexture('src/assets/img/earth.jpg');
   const orbitRadius = 60;
-  const orbitSpeed = 0.003;
+  // const orbitSpeed = 0.003;
   const angle = useRef(0);
   useFrame(() => {
-    angle.current += orbitSpeed;
+    // angle.current += orbitSpeed;
     const x = Math.cos(angle.current) * orbitRadius;
     const z = Math.sin(angle.current) * orbitRadius;
     systemRef.current.position.set(x, 0, z);

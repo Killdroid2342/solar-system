@@ -6,10 +6,10 @@ export function Uranus() {
   const systemRef = useRef<Mesh>(null!);
   const texture = useTexture('src/assets/img/uranus.jpg');
   const orbitRadius = 140;
-  const orbitSpeed = 0.0004;
+  // const orbitSpeed = 0.0004;
   const angle = useRef(0);
   useFrame(() => {
-    angle.current += orbitSpeed;
+    // angle.current += orbitSpeed;
     const x = Math.cos(angle.current) * orbitRadius;
     const z = Math.sin(angle.current) * orbitRadius;
     systemRef.current.position.set(x, 0, z);
