@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { Mesh } from 'three';
-import { ThreeEvent, useFrame } from '@react-three/fiber';
+import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 
 export function Mercury({ OpenModal, name }: any) {
@@ -19,12 +19,12 @@ export function Mercury({ OpenModal, name }: any) {
     systemRef.current.rotation.y += 0.03;
   });
 
-  const planetClick = (e: ThreeEvent<MouseEvent>) => {
-    OpenModal(name); // Pass the planet name to OpenModal
+  const planetClick = () => {
+    OpenModal(name);
   };
 
   return (
-    <mesh onClick={planetClick}>
+    <group onClick={planetClick}>
       <mesh rotation-x={Math.PI / 2}>
         <torusGeometry args={[orbitRadius, 0.03, 64, 64]} />
         <meshBasicMaterial color='white' />
@@ -34,6 +34,6 @@ export function Mercury({ OpenModal, name }: any) {
         <sphereGeometry args={[0.5, 128, 64]} />
         <meshStandardMaterial map={texture} />
       </mesh>
-    </mesh>
+    </group>
   );
 }

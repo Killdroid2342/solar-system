@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Mesh } from 'three';
 import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-export function Neptune() {
+export function Neptune({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const texture = useTexture('src/assets/img/neptune.jpg');
   const orbitRadius = 160;
@@ -15,18 +15,19 @@ export function Neptune() {
     systemRef.current.position.set(x, 0, z);
     systemRef.current.rotation.y += 0.002;
   });
+  const planetClick = () => {
+    OpenModal(name);
+  };
   return (
-    <>
-      <group>
-        <mesh rotation-x={Math.PI / 2}>
-          <torusGeometry args={[orbitRadius, 0.02]} />
-          <meshBasicMaterial color='white' />
-        </mesh>
-        <mesh ref={systemRef} position={[160, 0, 0]}>
-          <sphereGeometry args={[2, 128, 64]} />
-          <meshStandardMaterial map={texture} />
-        </mesh>
-      </group>
-    </>
+    <group onClick={planetClick}>
+      <mesh rotation-x={Math.PI / 2}>
+        <torusGeometry args={[orbitRadius, 0.02]} />
+        <meshBasicMaterial color='white' />
+      </mesh>
+      <mesh ref={systemRef} position={[160, 0, 0]}>
+        <sphereGeometry args={[2, 128, 64]} />
+        <meshStandardMaterial map={texture} />
+      </mesh>
+    </group>
   );
 }
