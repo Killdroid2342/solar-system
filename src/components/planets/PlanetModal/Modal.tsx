@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Modal = ({ closeModal, selectedPlanet, data }: any) => {
+const Modal = ({ closeModal, selectedPlanet, data, sunData }: any) => {
   console.log(data);
+  const planetData = data.find((planet: any) => planet.name === selectedPlanet);
+
   return (
     <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-opacity-50 bg-black'>
       <div className='bg-transparent p-4 rounded-lg overflow-auto max-h-96 text-white border border-white'>
@@ -11,29 +13,44 @@ const Modal = ({ closeModal, selectedPlanet, data }: any) => {
         >
           X
         </button>
-        <h2 className='text-2xl font-semibold mb-4'>{`Information About ${selectedPlanet}`}</h2>
-        {data?.map((planet: any) => {
-          if (planet.name === selectedPlanet) {
-            return (
-              <div key={planet.planetOrder}>
-                <p className='text-white text-center text-2xl'>{planet.name}</p>
-                <p className='text-white text-center'>{planet.description}</p>
-                <p className='text-white text-center'>
-                  {` Mass of ${planet.name} ${' '} ${planet.basicDetails.mass}`}
-                </p>
 
-                <p className='text-white text-center'>
-                  {` Volume of ${planet.name} ${' '} ${
-                    planet.basicDetails.volume
-                  }`}
-                </p>
-                <p className='text-white text-center'>{`Order of ${
-                  planet.name
-                }${' '}${planet.planetOrder}`}</p>
-              </div>
-            );
-          }
-        })}
+        {planetData ? (
+          <div>
+            <h2 className='text-2xl font-semibold mb-4'>{`Information About ${selectedPlanet}`}</h2>
+            <p className='text-white text-center text-2xl'>{planetData.name}</p>
+            <p className='text-white text-center'>{planetData.description}</p>
+            <p className='text-white text-center'>
+              {`Mass of ${planetData.name} ${' '} ${
+                planetData.basicDetails.mass
+              }`}
+            </p>
+            <p className='text-white text-center'>
+              {`Volume of ${planetData.name} ${' '} ${
+                planetData.basicDetails.volume
+              }`}
+            </p>
+            <p className='text-white text-center'>{`Order of ${
+              planetData.name
+            }${' '}${planetData.planetOrder}`}</p>
+          </div>
+        ) : (
+          // Render Sun's data for other planets
+          <div>
+            <h2 className='text-2xl font-semibold mb-4'>{`Information About ${sunData.name}`}</h2>
+
+            <p className='text-white text-center text-2xl'>{sunData.name}</p>
+            <p className='text-white text-center'>{sunData.description}</p>
+            <p className='text-white text-center'>
+              {`Mass of ${sunData.name} ${' '} ${sunData.mass}`}
+            </p>
+            <p className='text-white text-center'>
+              {`Volume of ${sunData.name} ${' '} ${sunData.volume}`}
+            </p>
+            <p className='text-white text-center'>{`Order of ${
+              sunData.name
+            }${' '}${sunData.planetOrder}`}</p>
+          </div>
+        )}
       </div>
     </div>
   );
