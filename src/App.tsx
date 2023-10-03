@@ -12,10 +12,18 @@ import { Neptune } from './components/planets/Neptune';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Modal from './components/planets/PlanetModal/Modal';
-
+const sunData = {
+  name: 'Sun',
+  description: 'dfgdfgdfgd',
+  mass: 12983,
+  volume: 12132123132,
+  planetOrder: 'asdasd',
+};
+console.log(sunData);
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [data, setData] = useState('');
+  const [data, setData] = useState({});
+  console.log(data);
   const [selectedPlanet, setSelectedPlanet] = useState('');
 
   const OpenModal = (name: string) => {
@@ -53,12 +61,12 @@ const App = () => {
         <ambientLight intensity={0.1} />
         <Mercury OpenModal={OpenModal} name='Mercury' />
         <Venus OpenModal={OpenModal} name='Venus' />
-        <Earth />
-        <Mars />
-        <Jupiter />
-        <Saturn />
-        <Uranus />
-        <Neptune />
+        <Earth OpenModal={OpenModal} name='Earth' />
+        <Mars OpenModal={OpenModal} name='Mars' />
+        <Jupiter OpenModal={OpenModal} name='Jupiter' />
+        <Saturn OpenModal={OpenModal} name='Saturn' />
+        <Uranus OpenModal={OpenModal} name='Uranus' />
+        <Neptune OpenModal={OpenModal} name='Neptune' />
         <Stars
           radius={150}
           count={7000}
@@ -74,6 +82,7 @@ const App = () => {
           data={data}
           setData={setData}
           selectedPlanet={selectedPlanet}
+          sunData={sunData}
         />
       )}
     </div>
