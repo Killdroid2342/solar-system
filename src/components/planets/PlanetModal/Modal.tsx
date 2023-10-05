@@ -1,7 +1,4 @@
-import React from 'react';
-
 const Modal = ({ closeModal, selectedPlanet, data, sunData }: any) => {
-  console.log(data);
   const planetData = data.find((planet: any) => planet.name === selectedPlanet);
 
   return (
@@ -34,10 +31,8 @@ const Modal = ({ closeModal, selectedPlanet, data, sunData }: any) => {
             }${' '}${planetData.planetOrder}`}</p>
           </div>
         ) : (
-          // Render Sun's data for other planets
           <div>
             <h2 className='text-2xl font-semibold mb-4'>{`Information About ${sunData.name}`}</h2>
-
             <p className='text-white text-center text-2xl'>{sunData.name}</p>
             <p className='text-white text-center'>{sunData.description}</p>
             <p className='text-white text-center'>

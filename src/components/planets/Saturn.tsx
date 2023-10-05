@@ -9,11 +9,11 @@ export function Saturn({ OpenModal, name }: any) {
   const texture = useTexture('src/assets/img/saturn.jpg');
   const ringTexture = useTexture('src/assets/img/saturnring.png');
   const orbitRadius = 120;
-  // const orbitSpeed = 0.0005;
+  const orbitSpeed = 0.0005;
   const angle = useRef(0);
 
   useFrame(() => {
-    // angle.current += orbitSpeed;
+    angle.current += orbitSpeed;
     const x = Math.cos(angle.current) * orbitRadius;
 
     const z = Math.sin(angle.current) * orbitRadius;
@@ -39,7 +39,7 @@ export function Saturn({ OpenModal, name }: any) {
         </mesh>
 
         <mesh ref={ringRef} rotation={[Math.PI / 2, 0.2, 0]}>
-          <ringGeometry args={[2.5 + 0.2, 4 + 2, 32]} />
+          <ringGeometry args={[2.5 + 0.7, 4 + 2, 32]} />
           <meshBasicMaterial map={ringTexture} side={DoubleSide} />
         </mesh>
       </mesh>
