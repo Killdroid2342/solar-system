@@ -13,37 +13,35 @@ const Modal = ({ closeModal, selectedPlanet, data, sunData }: any) => {
 
         {planetData ? (
           <div>
-            <h2 className='text-2xl font-semibold mb-4'>{`Information About ${selectedPlanet}`}</h2>
-            <p className='text-white text-center text-2xl'>{planetData.name}</p>
-            <p className='text-white text-center'>{planetData.description}</p>
-            <p className='text-white text-center'>
-              {`Mass of ${planetData.name} ${' '} ${
+            <h2 className='text-3xl font-semibold mb-4 text-center'>{`Information About ${selectedPlanet}`}</h2>
+            <p className='text-white'>{planetData.description}</p>
+            <p className='text-white mt-5'>
+              {`Mass of ${planetData.name}${': '} ${
                 planetData.basicDetails.mass
               }`}
             </p>
-            <p className='text-white text-center'>
-              {`Volume of ${planetData.name} ${' '} ${
+            <p className='text-white  mt-5'>
+              {`Volume of ${planetData.name}${': '} ${
                 planetData.basicDetails.volume
               }`}
             </p>
-            <p className='text-white text-center'>{`Order of ${
+            <p className='text-white  mt-5'>{`Order of ${
               planetData.name
-            }${' '}${planetData.planetOrder}`}</p>
+            }${': '}${planetData.planetOrder}`}</p>
           </div>
         ) : (
           <div>
-            <h2 className='text-2xl font-semibold mb-4'>{`Information About ${sunData.name}`}</h2>
-            <p className='text-white text-center text-2xl'>{sunData.name}</p>
-            <p className='text-white text-center'>{sunData.description}</p>
-            <p className='text-white text-center'>
-              {`Mass of ${sunData.name} ${' '} ${sunData.mass}`}
+            <h2 className='text-3xl font-semibold mb-4 text-center'>{`Information About ${sunData.name}`}</h2>
+            <p className='text-white'>{sunData.description}</p>
+            <p className='text-white mt-5'>
+              {`Mass of ${sunData.name}${': '} ${sunData.mass}`}
             </p>
-            <p className='text-white text-center'>
-              {`Volume of ${sunData.name} ${' '} ${sunData.volume}`}
+            <p className='text-white mt-5'>
+              {`Volume of ${sunData.name}${': '} ${sunData.volume}`}
             </p>
-            <p className='text-white text-center'>{`Order of ${
-              sunData.name
-            }${' '}${sunData.planetOrder}`}</p>
+            <p className='text-white mt-5'>{`Order of ${sunData.name}${': '}${
+              sunData.planetOrder
+            }`}</p>
           </div>
         )}
       </div>
