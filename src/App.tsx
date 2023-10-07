@@ -34,25 +34,25 @@ const App = () => {
   const closeModal = () => {
     setOpenModal(false);
   };
-  async function getData() {
-    const options = {
-      method: 'GET',
-      url: 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/',
-      headers: {
-        'X-RapidAPI-Key': '666a0b4740msh10e928643b87294p167356jsn43c95ed0f3b6',
-        'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com',
-      },
-    };
-    try {
-      const response = await axios.request(options);
-      setData(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  useEffect(() => {
-    getData();
-  }, []);
+  // async function getData() {
+  //   const options = {
+  //     method: 'GET',
+  //     url: 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/',
+  //     headers: {
+  //       'X-RapidAPI-Key': '666a0b4740msh10e928643b87294p167356jsn43c95ed0f3b6',
+  //       'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com',
+  //     },
+  //   };
+  //   try {
+  //     const response = await axios.request(options);
+  //     setData(response.data);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+  // useEffect(() => {
+  //   getData();
+  // }, []);
   return (
     <div className='h-screen cursor-grab active:cursor-grabbing'>
       <Canvas>
