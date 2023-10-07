@@ -6,26 +6,37 @@ import { KernelSize, Resolution } from 'postprocessing';
 
 export function Sun({ OpenModal }: any) {
   const texture = useTexture('src/assets/img/sun.jpg');
-  const systemRef = useRef<Mesh>(null!);
+  const sphereRef = useRef<Mesh>(null!);
   const pointLightRef = useRef<PointLight>(null!);
 
   return (
     <>
-      <mesh ref={systemRef} onClick={OpenModal}>
-        <sphereGeometry args={[5, 128, 64]} />
-        <meshPhysicalMaterial
-          roughness={0.2}
-          metalness={0.5}
-          emissiveMap={texture}
-          emissive={'white'}
-          emissiveIntensity={2}
-        />
-        <pointLight ref={pointLightRef} intensity={9000} />
+      <group>
+        <mesh ref={sphereRef} onClick={OpenModal}>
+          <sphereGeometry args={[5, 128, 64]} />
+          <meshPhysicalMaterial
+            roughness={0.2}
+            metalness={0.5}
+            emissiveMap={texture}
+            emissive={'white'}
+            emissiveIntensity={2}
+          />
+        </mesh>
+        <pointLight ref={pointLightRef} intensity={9000} color='white' />
         <OrbitControls />
         <EffectComposer>
-          <Bloom />
+          <Bloom
+            intensity={1.5}
+            kernelSize={KernelSize.LARGE}
+            luminanceThreshold={0.9}
+            luminanceSmoothing={0.1}
+            mipmapBlur={true}
+            resolutionX={Resolution.AUTO_SIZE}
+            resolutionY={Resolution.AUTO_SIZE}
+            blendFunction={undefined}
+          />
         </EffectComposer>
-      </mesh>
+      </group>
     </>
   );
 }
