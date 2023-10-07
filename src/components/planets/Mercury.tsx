@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Mercury({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('src/assets/img/mercury.jpg');
+  const texture = useTexture('./src/assets/img/mercury.jpg');
 
   const orbitRadius = 20;
   const orbitSpeed = 0.01;

@@ -6,8 +6,8 @@ import { useFrame } from '@react-three/fiber';
 export function Saturn({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('src/assets/img/saturn.jpg');
-  const ringTexture = useTexture('src/assets/img/saturnring.png');
+  const texture = useTexture('./src/assets/img/saturn.jpg');
+  const ringTexture = useTexture('./src/assets/img/saturnring.png');
   const orbitRadius = 120;
   const orbitSpeed = 0.0005;
   const angle = useRef(0);

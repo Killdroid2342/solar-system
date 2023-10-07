@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Neptune({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('src/assets/img/neptune.jpg');
+  const texture = useTexture('./src/assets/img/neptune.jpg');
   const orbitRadius = 160;
   const orbitSpeed = 0.0003;
   const angle = useRef(0);
