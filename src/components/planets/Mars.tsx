@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Mars({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('/src/assets/img/mars.jpg');
+  const texture = useTexture('/assets/img/mars.jpg');
 
   const orbitRadius = 80;
   const orbitSpeed = 0.001;
@@ -32,7 +32,7 @@ export function Mars({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0.2}
+          opacity={0}
           transparent
           depthTest={true}
         />

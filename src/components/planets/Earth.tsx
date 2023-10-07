@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Earth({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('/src/assets/img/earth.jpg');
+  const texture = useTexture('/assets/img/earth.jpg');
 
   const orbitRadius = 60;
   const orbitSpeed = 0.003;
@@ -32,7 +32,7 @@ export function Earth({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0.2}
+          opacity={0}
           transparent
           depthTest={true}
         />

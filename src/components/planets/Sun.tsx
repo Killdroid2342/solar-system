@@ -5,7 +5,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize, Resolution } from 'postprocessing';
 
 export function Sun({ OpenModal }: any) {
-  const texture = useTexture('/src/assets/img/sun.jpg');
+  const texture = useTexture('/assets/img/sun.jpg');
   const sphereRef = useRef<Mesh>(null!);
   const pointLightRef = useRef<PointLight>(null!);
 

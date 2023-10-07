@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Venus({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('/src/assets/img/venus.jpg');
+  const texture = useTexture('/assets/img/venus.jpg');
 
   const orbitRadius = 40;
   const orbitSpeed = 0.005;
@@ -32,7 +32,7 @@ export function Venus({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0.2}
+          opacity={0}
           transparent
           depthTest={true}
         />

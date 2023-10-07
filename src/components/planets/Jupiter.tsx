@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Jupiter({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('/src/assets/img/jupiter.jpg');
+  const texture = useTexture('/assets/img/jupiter.jpg');
   const orbitRadius = 100;
   const orbitSpeed = 0.0009;
   const angle = useRef(0);
@@ -28,7 +28,7 @@ export function Jupiter({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0.2}
+          opacity={0}
           transparent
           depthTest={true}
         />
