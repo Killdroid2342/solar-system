@@ -27,8 +27,14 @@ export function Neptune({ OpenModal, name }: any) {
   return (
     <group onClick={planetClick}>
       <mesh rotation-x={Math.PI / 2}>
-        <torusGeometry args={[orbitRadius, 0.02]} />
-        <meshBasicMaterial color='white' />
+        <torusGeometry args={[orbitRadius, 0.02, 64, 128]} />
+        <meshBasicMaterial
+          color='white'
+          side={DoubleSide}
+          opacity={0.2}
+          transparent
+          depthTest={true}
+        />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
         <meshBasicMaterial color='green' />

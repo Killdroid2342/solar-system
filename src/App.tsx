@@ -20,11 +20,11 @@ const sunData = {
   volume: '1,412,000,000,000 km^3',
   planetOrder: '0',
 };
-console.log(sunData);
+
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState({});
-  console.log(data);
+
   const [selectedPlanet, setSelectedPlanet] = useState('');
 
   const OpenModal = (name: string) => {
@@ -46,8 +46,8 @@ const App = () => {
     try {
       const response = await axios.request(options);
       setData(response.data);
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.log(e);
     }
   }
   useEffect(() => {
