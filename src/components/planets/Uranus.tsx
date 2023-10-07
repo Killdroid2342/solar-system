@@ -6,7 +6,7 @@ import { useFrame } from '@react-three/fiber';
 export function Uranus({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
-  const texture = useTexture('./src/assets/img/uranus.jpg');
+  const texture = useTexture('/src/assets/img/uranus.jpg');
   const orbitRadius = 140;
   const orbitSpeed = 0.0004;
   const angle = useRef(0);
