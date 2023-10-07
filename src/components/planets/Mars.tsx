@@ -8,7 +8,7 @@ export function Mars({ OpenModal, name }: any) {
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/mars.jpg');
 
-  const orbitRadius = 80;
+  const orbitRadius = 120;
   const orbitSpeed = 0.001;
   const angle = useRef(0);
 
@@ -32,13 +32,13 @@ export function Mars({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        <mesh ref={systemRef} position={[80, 0, 0]}>
+        <mesh ref={systemRef} position={[120, 0, 0]}>
           <sphereGeometry args={[0.9, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>

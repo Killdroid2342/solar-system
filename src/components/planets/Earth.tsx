@@ -8,7 +8,7 @@ export function Earth({ OpenModal, name }: any) {
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/earth.jpg');
 
-  const orbitRadius = 60;
+  const orbitRadius = 100;
   const orbitSpeed = 0.003;
   const angle = useRef(0);
 
@@ -32,13 +32,13 @@ export function Earth({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        <mesh ref={systemRef} position={[60, 0, 0]}>
+        <mesh ref={systemRef} position={[100, 0, 0]}>
           <sphereGeometry args={[0.9, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>

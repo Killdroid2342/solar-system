@@ -7,7 +7,7 @@ export function Jupiter({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/jupiter.jpg');
-  const orbitRadius = 100;
+  const orbitRadius = 140;
   const orbitSpeed = 0.0009;
   const angle = useRef(0);
   useFrame(() => {
@@ -28,13 +28,13 @@ export function Jupiter({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        <mesh ref={systemRef} position={[100, 0, 0]}>
+        <mesh ref={systemRef} position={[140, 0, 0]}>
           <sphereGeometry args={[3, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>

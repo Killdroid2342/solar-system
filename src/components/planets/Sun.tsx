@@ -13,7 +13,7 @@ export function Sun({ OpenModal }: any) {
     <>
       <group>
         <mesh ref={sphereRef} onClick={OpenModal}>
-          <sphereGeometry args={[5, 128, 64]} />
+          <sphereGeometry args={[25, 128, 64]} />
           <meshPhysicalMaterial
             roughness={0.2}
             metalness={0.5}

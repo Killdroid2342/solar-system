@@ -8,7 +8,7 @@ export function Mercury({ OpenModal, name }: any) {
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/mercury.jpg');
 
-  const orbitRadius = 20;
+  const orbitRadius = 60;
   const orbitSpeed = 0.01;
   const angle = useRef(0);
 
@@ -32,13 +32,13 @@ export function Mercury({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
-        <mesh ref={systemRef} position={[20, 0, 0]}>
+        <mesh ref={systemRef} position={[60, 0, 0]}>
           <sphereGeometry args={[0.5, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>

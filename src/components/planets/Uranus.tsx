@@ -7,7 +7,7 @@ export function Uranus({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/uranus.jpg');
-  const orbitRadius = 140;
+  const orbitRadius = 180;
   const orbitSpeed = 0.0004;
   const angle = useRef(0);
 
@@ -31,14 +31,14 @@ export function Uranus({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
         <meshBasicMaterial color='green' />
-        <mesh ref={systemRef} position={[140, 0, 0]}>
+        <mesh ref={systemRef} position={[180, 0, 0]}>
           <sphereGeometry args={[2.5, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>

@@ -8,7 +8,7 @@ export function Saturn({ OpenModal, name }: any) {
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/saturn.jpg');
   const ringTexture = useTexture('/assets/img/saturnring.png');
-  const orbitRadius = 120;
+  const orbitRadius = 160;
   const orbitSpeed = 0.0005;
   const angle = useRef(0);
 
@@ -32,21 +32,27 @@ export function Saturn({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
         <meshBasicMaterial color='green' />
-        <mesh ref={systemRef} position={[120, 0, 0]}>
+        <mesh ref={systemRef} position={[160, 0, 0]}>
           <sphereGeometry args={[2.5, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>
 
         <mesh ref={ringRef} rotation={[Math.PI / 2, 0.2, 0]}>
           <ringGeometry args={[2.5 + 0.7, 4 + 2, 32]} />
-          <meshBasicMaterial map={ringTexture} side={DoubleSide} />
+          <meshBasicMaterial
+            map={ringTexture}
+            side={DoubleSide}
+            opacity={0.3}
+            transparent
+            depthTest={true}
+          />
         </mesh>
       </mesh>
     </group>

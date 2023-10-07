@@ -7,7 +7,7 @@ export function Neptune({ OpenModal, name }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/neptune.jpg');
-  const orbitRadius = 160;
+  const orbitRadius = 200;
   const orbitSpeed = 0.0003;
   const angle = useRef(0);
 
@@ -31,7 +31,7 @@ export function Neptune({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />

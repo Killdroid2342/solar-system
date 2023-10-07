@@ -8,7 +8,7 @@ export function Venus({ OpenModal, name }: any) {
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/venus.jpg');
 
-  const orbitRadius = 40;
+  const orbitRadius = 80;
   const orbitSpeed = 0.005;
   const angle = useRef(0);
 
@@ -25,6 +25,7 @@ export function Venus({ OpenModal, name }: any) {
   const planetClick = () => {
     OpenModal(name);
   };
+
   return (
     <group onClick={planetClick}>
       <mesh rotation-x={Math.PI / 2}>
@@ -32,13 +33,13 @@ export function Venus({ OpenModal, name }: any) {
         <meshBasicMaterial
           color='white'
           side={DoubleSide}
-          opacity={0}
+          opacity={0.2}
           transparent
           depthTest={true}
         />
       </mesh>
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        <mesh ref={systemRef} position={[40, 0, 0]}>
+        <mesh ref={systemRef} position={[80, 0, 0]}>
           <sphereGeometry args={[0.8, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>
