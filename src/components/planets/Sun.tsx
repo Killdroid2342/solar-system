@@ -4,15 +4,20 @@ import { OrbitControls, useTexture } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { KernelSize, Resolution } from 'postprocessing';
 
-export function Sun({ OpenModal }: any) {
+export function Sun({ OpenModal, sunData, setData }: any) {
   const texture = useTexture('/assets/img/sun.jpg');
   const sphereRef = useRef<Mesh>(null!);
   const pointLightRef = useRef<PointLight>(null!);
 
+  const sun = () => {
+    OpenModal();
+    setData(sunData);
+  };
+
   return (
     <>
       <group>
-        <mesh ref={sphereRef} onClick={OpenModal}>
+        <mesh ref={sphereRef} onClick={sun}>
           <sphereGeometry args={[25, 128, 64]} />
           <meshPhysicalMaterial
             roughness={0.2}
