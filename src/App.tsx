@@ -10,7 +10,7 @@ import { Saturn } from './components/planets/Saturn';
 import { Uranus } from './components/planets/Uranus';
 import { Neptune } from './components/planets/Neptune';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Modal from './components/planets/PlanetModal/Modal';
 const sunData = {
   name: 'Sun',
@@ -19,12 +19,12 @@ const sunData = {
   mass: '1.989 × 10^30 kg',
   volume: '1,412,000,000,000 km^3',
   planetOrder: '0',
+  id: 0,
 };
 
 const App = () => {
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState({});
-
   const [selectedPlanet, setSelectedPlanet] = useState('');
 
   const OpenModal = (name: string) => {
@@ -33,11 +33,20 @@ const App = () => {
   };
   const closeModal = () => {
     setOpenModal(false);
+    setData({
+      name: '',
+      description: '',
+      mass: '',
+      volume: '',
+      planetOrder: '',
+      id: 0,
+    });
+    setSelectedPlanet('');
   };
-  async function getData() {
+  async function getData(id: any) {
     const options = {
       method: 'GET',
-      url: 'https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/',
+      url: `https://planets-info-by-newbapi.p.rapidapi.com/api/v1/planets/${id}`,
       headers: {
         'X-RapidAPI-Key': '666a0b4740msh10e928643b87294p167356jsn43c95ed0f3b6',
         'X-RapidAPI-Host': 'planets-info-by-newbapi.p.rapidapi.com',
@@ -50,26 +59,39 @@ const App = () => {
       console.log(e);
     }
   }
-  useEffect(() => {
-    getData();
-  }, []);
+
   return (
     <div className='h-screen cursor-grab active:cursor-grabbing'>
       <Canvas>
         <PerspectiveCamera makeDefault fov={50} position={[90, 120, 90]} />
         <color attach='background' args={['black']} />
-        <Sun OpenModal={OpenModal} />
+        <Sun OpenModal={OpenModal} sunData={sunData} setData={setData} />
         <ambientLight intensity={0.1} />
-        <Mercury OpenModal={OpenModal} name='Mercury' />
-        <Venus OpenModal={OpenModal} name='Venus' />
-        <Earth OpenModal={OpenModal} name='Earth' />
-        <Mars OpenModal={OpenModal} name='Mars' />
-        <Jupiter OpenModal={OpenModal} name='Jupiter' />
-        <Saturn OpenModal={OpenModal} name='Saturn' />
-        <Uranus OpenModal={OpenModal} name='Uranus' />
-        <Neptune OpenModal={OpenModal} name='Neptune' />
+        <Mercury
+          OpenModal={OpenModal}
+          name='Mercury'
+          getData={getData}
+          id={1}
+        />
+        <Venus OpenModal={OpenModal} name='Venus' getData={getData} id={2} />
+        <Earth OpenModal={OpenModal} name='Earth' getData={getData} id={3} />
+        <Mars OpenModal={OpenModal} name='Mars' getData={getData} id={4} />
+        <Jupiter
+          OpenModal={OpenModal}
+          name='Jupiter'
+          getData={getData}
+          id={5}
+        />
+        <Saturn OpenModal={OpenModal} name='Saturn' getData={getData} id={6} />
+        <Uranus OpenModal={OpenModal} name='Uranus' getData={getData} id={7} />
+        <Neptune
+          OpenModal={OpenModal}
+          name='Neptune'
+          getData={getData}
+          id={8}
+        />
         <Stars
-          radius={150}
+          radius={400}
           count={7000}
           factor={2}
           saturation={100}
