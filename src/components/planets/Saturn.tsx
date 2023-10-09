@@ -2,8 +2,9 @@ import { useRef } from 'react';
 import { DoubleSide, Mesh } from 'three';
 import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import Rings from './planetRings/Rings';
 
-export function Saturn({ OpenModal, name }: any) {
+export function Saturn({ OpenModal, name, getData, id }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/saturn.jpg');
@@ -24,26 +25,17 @@ export function Saturn({ OpenModal, name }: any) {
 
   const planetClick = () => {
     OpenModal(name);
+    getData(id);
   };
   return (
     <group onClick={planetClick}>
-      <mesh rotation-x={Math.PI / 2}>
-        <torusGeometry args={[orbitRadius, 0.02, 64, 128]} />
-        <meshBasicMaterial
-          color='white'
-          side={DoubleSide}
-          opacity={0.2}
-          transparent
-          depthTest={true}
-        />
-      </mesh>
+      <Rings orbitRadius={orbitRadius} />
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]} castShadow>
         <meshBasicMaterial color='green' />
         <mesh ref={systemRef} position={[160, 0, 0]}>
           <sphereGeometry args={[2.5, 128, 64]} />
           <meshStandardMaterial map={texture} />
         </mesh>
-
         <mesh ref={ringRef} rotation={[Math.PI / 2, 0.2, 0]}>
           <ringGeometry args={[2.5 + 0.7, 4 + 2, 32]} />
           <meshBasicMaterial

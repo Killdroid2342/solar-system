@@ -2,8 +2,9 @@ import { useRef } from 'react';
 import { DoubleSide, Mesh } from 'three';
 import { useTexture } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import Rings from './planetRings/Rings';
 
-export function Jupiter({ OpenModal, name }: any) {
+export function Jupiter({ OpenModal, name, getData, id }: any) {
   const systemRef = useRef<Mesh>(null!);
   const ringRef = useRef<Mesh>(null!);
   const texture = useTexture('/assets/img/jupiter.jpg');
@@ -20,19 +21,11 @@ export function Jupiter({ OpenModal, name }: any) {
   });
   const planetClick = () => {
     OpenModal(name);
+    getData(id);
   };
   return (
     <group onClick={planetClick}>
-      <mesh rotation-x={Math.PI / 2}>
-        <torusGeometry args={[orbitRadius, 0.02, 64, 128]} />
-        <meshBasicMaterial
-          color='white'
-          side={DoubleSide}
-          opacity={0.2}
-          transparent
-          depthTest={true}
-        />
-      </mesh>
+      <Rings orbitRadius={orbitRadius} />
       <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
         <mesh ref={systemRef} position={[140, 0, 0]}>
           <sphereGeometry args={[3, 128, 64]} />
